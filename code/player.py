@@ -6,9 +6,12 @@ class Player():
         self.x_position = 250
         self.y_position = 250
         self.location = "tutorial"
-        self.health = 25
+        self.max_health = 25
+        self.health = self.max_health
         self.attack_damage = 1
         self.experience = 0
+        self.inventory = []
+        self.weapon = Weapon("pocketknife", "A trusty multitool that has never served you wrong", None)
 
     def move(self, direction:str):
         """move player one(1) tile in the specified direction"""
@@ -40,11 +43,24 @@ class Player():
 
     def heal(self, health:int):
         """increase health"""
-        pass
+        self.health += health
+
+    def pick_up(self, item:Item):
+        self.inventory.append(item)
 
     def interact(self, interactable):
-        """interact with a non-aggressive person or object"""
-        pass
+        """interact with a person or object
+        type of interactable argument determines response"""
+
+        if type(interactable) == Enemy:
+            self.attack(interactable)
+
+        if type(interactable) == Character and interactable.aggressive == False:
+            pass
+
+        if type(interactable) == Item and interactable.grabbable == True:
+            pass
+
 
     def level_up(self):
         """increase health and attack damage"""

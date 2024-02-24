@@ -8,10 +8,11 @@ class Player():
         self.location = "tutorial"
         self.max_health = 25
         self.health = self.max_health
-        self.attack_damage = 1
+        self.base_attack_damage = 1
+        self.attack_damage = self.base_attack_damage
         self.experience = 0
         self.inventory = []
-        self.weapon = Weapon("pocketknife", "A trusty multitool that has never served you wrong", None)
+        self.weapon = Weapon("pocketknife", "A trusty multitool that has never served you wrong", 1)
 
     def move(self, direction:str):
         """move player one(1) tile in the specified direction"""
@@ -25,9 +26,12 @@ class Player():
         """buy an item"""
         pass
     
-    def equip_weapon(self, weapon:Weapon):
+    def equip_weapon(self, new_weapon:Weapon):
         """equip a new weapon and put the old one back in inventory"""
-        pass
+        self.inventory.remove(new_weapon)
+        self.inventory.append(self.weapon)
+        self.weapon = new_weapon
+        self.attack_damage = self.base_attack_damage * weapon.damage_multiplier
 
     def equip_armor(self, armor:Armor):
         """equip new armor and put the old one back in inventory if necessary"""

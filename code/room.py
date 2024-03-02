@@ -18,3 +18,36 @@ class Room():
 
     def add_monsters(self):
         pass
+
+    def add_item(self, item:Item):
+        pass
+
+
+class SkillRoom(Room):
+
+    def __init__(self):
+        pass
+
+
+class ExitRoom(Room):
+
+    def __init__(self):
+        pass
+
+
+class ChallengeRoom(Room):
+
+    def __init__(self):
+        pass
+
+
+class ShopRoom(Room):
+
+    def __init__(self):
+        pass
+
+
+class CharacterRoom(Room):
+
+    def __init__(self):
+        pass

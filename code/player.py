@@ -11,6 +11,8 @@ class Player():
         self.base_attack_damage = 1
         self.attack_damage = self.base_attack_damage
         self.experience = 0
+        self.money = 0
+        self.level = 1
         self.inventory = []
         self.weapon = Weapon("pocketknife", "A trusty multitool that has never served you wrong", 1)
 
@@ -23,8 +25,9 @@ class Player():
         pass
 
     def buy(self, item:Item):
-        """buy an item"""
-        pass
+        """buy an item and add it to inventory"""
+        self.money -= item.cost
+        self.inventory.append(item)
     
     def equip_weapon(self, new_weapon:Weapon):
         """equip a new weapon and put the old one back in inventory"""
@@ -63,10 +66,12 @@ class Player():
             pass
 
         if type(interactable) == Item and interactable.grabbable == True:
-            pass
+            self.pick_up(interactable)
 
 
     def level_up(self):
         """increase health and attack damage"""
-        self.max_health += 5
-        self.attack_damage += 3
+        if self.level < 10:
+            self.level += 1
+            self.max_health += 5
+            self.attack_damage += 3

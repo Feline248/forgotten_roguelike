@@ -12,3 +12,18 @@ class TrapTile(Tile):
         Tile.__init__(self, image, permeability=True)
         self.trap_type = trap_type
 
+    def activate_trap(self):
+
+        if self.trap_type == "sticky":
+            pass
+
+        if self.trap_type == "spikes":
+            pass
+
+        if self.trap_type == "bear_trap":
+            pass
+
+        if self.trap_type == "fire":
+            pass
+
+

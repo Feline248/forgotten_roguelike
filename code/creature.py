@@ -1,4 +1,5 @@
 import pygame
+import attacks
 
 class Creature():
 
@@ -21,10 +22,10 @@ class Monster(Creature):
         Creature.__init__(self, image, move_pattern, aggressive=True)
         self.type = type
         self.health = health
-        #will reference a dictionary with different enemies attacks
-        # self.attacks = 
-        # self.attack_damages =
-        # self.attack_animations = 
+        self.attacks = self.type["attacks"]
+        self.attack_damages = self.type["attack_damages"]
+        self.attack_animations = self.type["attack_animations"]
+        self.attack_frequencies = self.type["attack_frequencies"]
 
 
 

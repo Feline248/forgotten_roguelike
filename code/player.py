@@ -59,10 +59,10 @@ class Player():
         """interact with a person or object
         type of interactable argument determines response"""
 
-        if type(interactable) == Enemy:
+        if type(interactable) == Creature and interactable.aggressive == True:
             self.attack(interactable)
 
-        if type(interactable) == Character and interactable.aggressive == False:
+        if type(interactable) == Creature and interactable.aggressive == False:
             pass
 
         if type(interactable) == Item and interactable.grabbable == True:

@@ -1,8 +1,9 @@
 from random import choice
+from creature import Character, Monster, Boss
 
 class Room():
 
-    def __init__(self, location:str, tileset:list, dimensions:list, monsters:list): #dimensions is a list in the form of [height, width] in units of tiles
+    def __init__(self, location:str, tileset:list[Tile], dimensions:list[int], monsters:list[Monster]): #dimensions is a list in the form of [height, width] in units of tiles
         self.location = location
         self.tileset = tileset
         self.monsters = monsters
@@ -29,7 +30,7 @@ class SkillRoom(Room):
     """skill rooms require the player to solve a puzzle
     in order to learn a new skill"""
 
-    def __init__(self, location:str, tileset:list, dimensions:list):
+    def __init__(self, location:str, tileset:list[Tile], dimensions:list[int]):
         Room.__init__(self, location, tileset, dimensions, monsters=[])
 
     #TODO figure out how to implement puzzles
@@ -39,7 +40,7 @@ class ExitRoom(Room):
     """exit rooms allow the player to move to the next 
     level if the flash drive has been found"""
 
-    def __init__(self, location:str, tileset:list, dimensions:list, monsters:list):
+    def __init__(self, location:str, tileset:list[Tile], dimensions:list[int], monsters:list[Monster]):
         Room.__init__(self, location, tileset, dimensions, monsters)
 
 
@@ -48,20 +49,18 @@ class ChallengeRoom(Room):
     contain the flashdrive the player uses to unlock 
     the door to the next level"""
 
-    def __init__(self, location:str, tileset:list, dimensions:list, monsters:list):
+    def __init__(self, location:str, tileset:list[Tile], dimensions:list[int], monsters:list[Monster]):
         Room.__init__(self, location, tileset, dimensions, monsters)
 
 
 
 class ShopRoom(Room):
 
-    def __init__(self, location:str, tileset:list, dimensions:list):
+    def __init__(self, location:str, tileset:list[Tile], dimensions:list[int]):
         Room.__init__(self, location, tileset, dimensions, monsters=[])
-
-
 
 
 class CharacterRoom(Room):
 
-    def __init__(self, location:str, tileset:list, dimensions:list, character:Character):
+    def __init__(self, location:str, tileset:list[Tile], dimensions:list[int], character:Character):
         Room.__init__(self, location, tileset, dimensions, monsters=[])
